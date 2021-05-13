@@ -1,9 +1,7 @@
 package de.sharknoon.siedlervoncatan.view.controller;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
-import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.view.Controller;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -31,8 +29,7 @@ implements Controller {
     public void setSpieler(Spieler spieler) {
         this.spieler = spieler;
         this.spielerL.setText(spieler.getName());
-        String farbe = spieler.getFarbe().toString().toLowerCase();
-        Image image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.AVATAR_FARBE.replace("{farbe}", farbe))));
+        Image image = spieler.getAvatar();
         this.avatarIV.setImage(image);
     }
 

@@ -13,7 +13,11 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -27,7 +31,7 @@ public class Spielstart extends Application {
     public void start(Stage primaryStage) {
         PRIMARYSTAGE = primaryStage;
         primaryStage.setTitle("Siedler von Catan");
-        primaryStage.getIcons().add(new Image(String.valueOf(Spielstart.class.getResource(Pfade.LOGO))));
+        primaryStage.getIcons().add(new Image(Pfade.LOGO));
         primaryStage.initStyle(StageStyle.UNIFIED);
         primaryStage.setMinHeight(730.0);
         primaryStage.setMinWidth(920.0);
@@ -44,7 +48,7 @@ public class Spielstart extends Application {
     private void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Spielstart.class.getResource(Pfade.ROOTLAYOUT));
+            loader.setLocation(new URL(Pfade.ROOTLAYOUT));
             this.rootLayout = loader.load();
             Scene scene = new Scene(this.rootLayout);
             PRIMARYSTAGE.setScene(scene);

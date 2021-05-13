@@ -7,17 +7,17 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Sound {
-    public static final MediaPlayer MUSIK_MENUE = new MediaPlayer(new Media(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_MENUE))));
-    public static final MediaPlayer MUSIK_MEER = new MediaPlayer(new Media(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_MEER))));
-    public static final MediaPlayer MUSIK_HANDEL = new MediaPlayer(new Media(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_HANDEL))));
-    public static final AudioClip WUERFEL_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_WUERFEL)));
-    public static final AudioClip WUERFEL_SHAKE_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_WUERFEL_WURF)));
-    public static final AudioClip BAU_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_BAU)));
-    public static final AudioClip BUTTON_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_KLICK)));
-    public static final AudioClip ERROR_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_ERROR)));
-    public static final AudioClip SIEGER_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_SIEGER)));
-    public static final AudioClip EVIL_LAUGH_CLIP = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_EVIL_LAUGH)));
-    public static final AudioClip PAPER = new AudioClip(String.valueOf(Spielstart.class.getResource(Pfade.SOUND_PAPER)));
+    public static final MediaPlayer MUSIK_MENUE = new MediaPlayer(new Media(Pfade.SOUND_MENUE));
+    public static final MediaPlayer MUSIK_MEER = new MediaPlayer(new Media(Pfade.SOUND_MEER));
+    public static final MediaPlayer MUSIK_HANDEL = new MediaPlayer(new Media(Pfade.SOUND_HANDEL));
+    public static final AudioClip WUERFEL_CLIP = new AudioClip(Pfade.SOUND_WUERFEL);
+    public static final AudioClip WUERFEL_SHAKE_CLIP = new AudioClip(Pfade.SOUND_WUERFEL_WURF);
+    public static final AudioClip BAU_CLIP = new AudioClip(Pfade.SOUND_BAU);
+    public static final AudioClip BUTTON_CLIP = new AudioClip(Pfade.SOUND_KLICK);
+    public static final AudioClip ERROR_CLIP = new AudioClip(Pfade.SOUND_ERROR);
+    public static final AudioClip SIEGER_CLIP = new AudioClip(Pfade.SOUND_SIEGER);
+    public static final AudioClip EVIL_LAUGH_CLIP = new AudioClip(Pfade.SOUND_EVIL_LAUGH);
+    public static final AudioClip PAPER = new AudioClip(Pfade.SOUND_PAPER);
     private static Sound SOUND;
     private boolean musikAn = true;
     private boolean soundeffekteAn = true;

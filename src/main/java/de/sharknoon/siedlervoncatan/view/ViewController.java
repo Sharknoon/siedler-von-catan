@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class ViewController {
     private final Spiel spiel;
@@ -27,7 +28,7 @@ public class ViewController {
 
     public Pane initPane(String view) throws IOException {
         this.loader = new FXMLLoader();
-        this.loader.setLocation(Spielstart.class.getResource(view));
+        this.loader.setLocation(new URL(view));
         Pane pane = this.loader.load();
         Controller controller = this.loader.getController();
         if (controller != null) {
@@ -40,7 +41,7 @@ public class ViewController {
 
     public Stage createStage(String view, String text) throws IOException {
         this.loader = new FXMLLoader();
-        this.loader.setLocation(Spielstart.class.getResource(view));
+        this.loader.setLocation(new URL(view));
         Pane pane = this.loader.load();
         Scene scene = new Scene(pane);
         Stage stage = new Stage();

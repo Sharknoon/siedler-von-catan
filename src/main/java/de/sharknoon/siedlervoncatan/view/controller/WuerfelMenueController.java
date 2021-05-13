@@ -1,11 +1,9 @@
 package de.sharknoon.siedlervoncatan.view.controller;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.enums.Rohstoff;
 import de.sharknoon.siedlervoncatan.sound.Sound;
 import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
-import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.view.Controller;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
@@ -44,8 +42,7 @@ implements Controller {
         this.spiel = spiel;
         Spieler aktiverSpieler = this.spiel.getAktiverSpieler();
         this.spieler.setText(aktiverSpieler.toString());
-        String farbe = aktiverSpieler.getFarbe().toString().toLowerCase();
-        Image image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.AVATAR_FARBE.replace("{farbe}", farbe))));
+        Image image = aktiverSpieler.getAvatar();
         this.avatarIV.setImage(image);
         this.setAnzahlRohstoffe(aktiverSpieler);
     }

@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.spielfeld;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.utility.Position;
@@ -67,8 +66,15 @@ public class Strasse implements Serializable {
 
     public Image getImage() {
         if (this.image == null) {
-            String farbe = this.besitzer.getFarbe().toString().toLowerCase();
-            this.image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.STRASSE.replace("{farbe}", farbe))));
+            String path = switch (this.besitzer.getFarbe()) {
+                case ROT -> Pfade.STRASSE_ROT;
+                case BLAU -> Pfade.STRASSE_BLAU;
+                case GELB -> Pfade.STRASSE_GELB;
+                case BRAUN -> Pfade.STRASSE_BRAUN;
+                case GRUEN -> Pfade.STRASSE_GRUEN;
+                case WEISS -> Pfade.STRASSE_WEISS;
+            };
+            this.image = new Image(path);
         }
         return this.image;
     }

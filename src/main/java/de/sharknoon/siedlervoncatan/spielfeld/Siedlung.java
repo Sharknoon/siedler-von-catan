@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.spielfeld;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.utility.Position;
@@ -65,8 +64,15 @@ public class Siedlung implements Ortschaft, Serializable {
     @Override
     public Image getImage() {
         if (this.image == null) {
-            String farbe = this.besitzer.getFarbe().toString().toLowerCase();
-            this.image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.SIEDLUNG.replace("{farbe}", farbe))));
+            String path = switch (this.besitzer.getFarbe()) {
+                case ROT -> Pfade.SIEDLUNG_ROT;
+                case BLAU -> Pfade.SIEDLUNG_BLAU;
+                case GELB -> Pfade.SIEDLUNG_GELB;
+                case BRAUN -> Pfade.SIEDLUNG_BRAUN;
+                case GRUEN -> Pfade.SIEDLUNG_GRUEN;
+                case WEISS -> Pfade.SIEDLUNG_WEISS;
+            };
+            this.image = new Image(path);
         }
         return this.image;
     }

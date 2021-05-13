@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.spielfeld;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.enums.Landschaft;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.utility.Position;
@@ -38,8 +37,14 @@ implements Serializable {
 
     public Image getImage() {
         if (this.image == null) {
-            String art = this.landschaft.toString().toLowerCase();
-            this.image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.LANDSCHAFT.replace("{art}", art))));
+            this.image = switch (this.landschaft) {
+                case ACKERLAND -> new Image(Pfade.LANDSCHAFT_ACKERLAND);
+                case GEBIRGE -> new Image(Pfade.LANDSCHAFT_GEBIRGE);
+                case HUEGELLAND -> new Image(Pfade.LANDSCHAFT_HUEGELLAND);
+                case WALD -> new Image(Pfade.LANDSCHAFT_WALD);
+                case WUESTE -> new Image(Pfade.LANDSCHAFT_WUESTE);
+                case WEIDELAND -> new Image(Pfade.LANDSCHAFT_WEIDELAND);
+            };
         }
         return this.image;
     }

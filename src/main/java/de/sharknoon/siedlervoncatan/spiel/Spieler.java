@@ -3,14 +3,12 @@ package de.sharknoon.siedlervoncatan.spiel;
 import de.sharknoon.siedlervoncatan.enums.*;
 import de.sharknoon.siedlervoncatan.sound.Sound;
 import de.sharknoon.siedlervoncatan.spielfeld.*;
-import de.sharknoon.siedlervoncatan.utility.Baukosten;
-import de.sharknoon.siedlervoncatan.utility.Position;
-import de.sharknoon.siedlervoncatan.utility.Wuerfel;
-import de.sharknoon.siedlervoncatan.utility.Zusatzpunkte;
+import de.sharknoon.siedlervoncatan.utility.*;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -411,6 +409,18 @@ Serializable {
 
     public IntegerProperty getAnzahlKarten() {
         return this.anzahlKarten;
+    }
+
+    public Image getAvatar() {
+        String path = switch (getFarbe()) {
+            case BLAU -> Pfade.AVATAR_BLAU;
+            case ROT -> Pfade.AVATAR_ROT;
+            case BRAUN -> Pfade.AVATAR_BRAUN;
+            case GELB -> Pfade.AVATAR_GELB;
+            case GRUEN -> Pfade.AVATAR_GRUEN;
+            case WEISS -> Pfade.AVATAR_WEISS;
+        };
+        return new Image(path);
     }
 
     public void preSave() {

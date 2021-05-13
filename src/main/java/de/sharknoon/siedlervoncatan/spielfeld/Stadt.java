@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.spielfeld;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
 import de.sharknoon.siedlervoncatan.utility.Position;
@@ -51,8 +50,15 @@ Serializable {
     @Override
     public Image getImage() {
         if (this.image == null) {
-            String farbe = this.besitzer.getFarbe().toString().toLowerCase();
-            this.image = new Image(String.valueOf(Spielstart.class.getResource(Pfade.STADT.replace("{farbe}", farbe))));
+            String path = switch (this.besitzer.getFarbe()) {
+                case ROT -> Pfade.STADT_ROT;
+                case BLAU -> Pfade.STADT_BLAU;
+                case GELB -> Pfade.STADT_GELB;
+                case BRAUN -> Pfade.STADT_BRAUN;
+                case GRUEN -> Pfade.STADT_GRUEN;
+                case WEISS -> Pfade.STADT_WEISS;
+            };
+            this.image = new Image(path);
         }
         return this.image;
     }

@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.view.controller;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.sound.Sound;
 import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spielfeld.Landschaftsfeld;
@@ -801,7 +800,16 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
     }
 
     private Image getWuerfelImage(int zahl) {
-        return new Image(String.valueOf(Spielstart.class.getResource(Pfade.WUERFEL_ZAHL.replace("{zahl}", String.valueOf(zahl)))));
+        String path = switch (zahl) {
+            case 1 -> Pfade.WUERFEL_EINS;
+            case 2 -> Pfade.WUERFEL_ZWEI;
+            case 3 -> Pfade.WUERFEL_DREI;
+            case 4 -> Pfade.WUERFEL_VIER;
+            case 5 -> Pfade.WUERFEL_FUENF;
+            case 6 -> Pfade.WUERFEL_SECHS;
+            default -> Pfade.WUERFEL_EINS;
+        };
+        return new Image(path);
     }
 
     @Override

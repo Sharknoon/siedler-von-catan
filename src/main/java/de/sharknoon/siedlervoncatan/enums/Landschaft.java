@@ -8,8 +8,7 @@ public enum Landschaft {
     ACKERLAND(Rohstoff.KORN, Color.GOLDENROD),
     HUEGELLAND(Rohstoff.LEHM, Color.CORAL),
     GEBIRGE(Rohstoff.ERZ, Color.GRAY),
-    WUESTE(null, Color.YELLOW),
-    MEER(null, Color.BLUE);
+    WUESTE(null, Color.YELLOW);
 
     private final Rohstoff rohstoff;
     private final Color color;
