@@ -1,29 +1,22 @@
 package de.sharknoon.siedlervoncatan.enums;
 
-import javafx.scene.paint.Color;
-
 public enum Landschaft {
-    WALD(Rohstoff.HOLZ, Color.DARKGREEN),
-    WEIDELAND(Rohstoff.WOLLE, Color.CHARTREUSE),
-    ACKERLAND(Rohstoff.KORN, Color.GOLDENROD),
-    HUEGELLAND(Rohstoff.LEHM, Color.CORAL),
-    GEBIRGE(Rohstoff.ERZ, Color.GRAY),
-    WUESTE(null, Color.YELLOW);
+    WALD(Rohstoff.HOLZ),
+    WEIDELAND(Rohstoff.WOLLE),
+    ACKERLAND(Rohstoff.KORN),
+    HUEGELLAND(Rohstoff.LEHM),
+    GEBIRGE(Rohstoff.ERZ),
+    WUESTE(null);
 
     private final Rohstoff rohstoff;
-    private final Color color;
 
-    Landschaft(Rohstoff rohstoff, Color color) {
+    Landschaft(Rohstoff rohstoff) {
         this.rohstoff = rohstoff;
-        this.color = color;
     }
 
     public Rohstoff getRohstoff() {
         return this.rohstoff;
     }
 
-    public Color getColor() {
-        return this.color;
-    }
 }
 

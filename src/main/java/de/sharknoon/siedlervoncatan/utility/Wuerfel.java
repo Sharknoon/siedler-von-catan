@@ -21,10 +21,6 @@ implements Serializable {
         this.support.addPropertyChangeListener(listener);
     }
 
-    public void removeListener(PropertyChangeListener listener) {
-        this.support.removePropertyChangeListener(listener);
-    }
-
     public void wuerfeln() {
         int w1 = Wuerfel.generiereZufallsZahl(6);
         int w2 = Wuerfel.generiereZufallsZahl(6);

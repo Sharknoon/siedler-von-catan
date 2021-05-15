@@ -13,6 +13,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Entwicklungskarte implements Serializable, PropertyChangeListener {
     @Serial
@@ -28,13 +29,13 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener {
         this.darfGespieltWerden = this.entwicklung.equals(Entwicklung.SIEGPUNKT);
     }
 
-    public boolean ausspielen() {
+    public void ausspielen() {
         if (this.entwicklung == Entwicklung.SIEGPUNKT) {
             this.besitzer.getSpiel().getUserInterface().zeigeInfo(this.besitzer + " spielt die karte Siegpunkt.");
             this.besitzer.erhoeheSiegpunkte();
             this.besitzer.getEntwickulungskarten().remove(this);
             this.zeigeMenue();
-            return true;
+            return;
         }
         if (!this.besitzer.entwicklungskarteGespielt()) {
             UserInterface userInterface = this.besitzer.getSpiel().getUserInterface();
@@ -80,10 +81,9 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener {
             }
             this.besitzer.setEntwicklungskarteGespielt();
             this.besitzer.getEntwickulungskarten().remove(this);
-            return true;
+            return;
         }
         this.besitzer.getSpiel().getUserInterface().zeigeError("Sie können keine weitere Entwicklung mehr spielen.");
-        return false;
     }
 
     private void strassenbau(Set<Position> positionen) {
@@ -133,7 +133,11 @@ public class Entwicklungskarte implements Serializable, PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if (Objects.equals(evt.getPropertyName(), "Kante")) {
-            this.strassenbau((Set<Position>)evt.getNewValue());
+            Set<Position> positionen = ((Set<?>) evt.getNewValue())
+                    .stream()
+                    .map(p -> (Position) p)
+                    .collect(Collectors.toSet());
+            this.strassenbau(positionen);
         }
     }
 }

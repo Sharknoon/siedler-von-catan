@@ -78,7 +78,7 @@ implements Controller {
     private void handleStrasse() {
         Sound.getInstanz().playSoundeffekt(Sound.BUTTON_CLIP);
         this.controller.setMessage(this.spiel.getAktiverSpieler() + " wählen Sie einen Bauplatz für ihre Strasse.");
-        this.spiel.setZustand(Zustand.STARSSE_BAUEN);
+        this.spiel.setZustand(Zustand.STRASSE_BAUEN);
     }
 
     @FXML

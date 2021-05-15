@@ -23,6 +23,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Spiel implements Serializable, PropertyChangeListener {
     @Serial
@@ -111,8 +112,20 @@ public class Spiel implements Serializable, PropertyChangeListener {
         }
         if (evt.getPropertyName().equals("Kante") && this.zustand != null) {
             switch (this.zustand) {
-                case ERSTE_STRASSE -> this.setzeStrasse((Set<Position>) evt.getNewValue());
-                case STARSSE_BAUEN -> this.strasseBauen((Set<Position>) evt.getNewValue());
+                case ERSTE_STRASSE -> {
+                    Set<Position> positionen = ((Set<?>) evt.getNewValue())
+                            .stream()
+                            .map(p -> (Position) p)
+                            .collect(Collectors.toSet());
+                    this.setzeStrasse(positionen);
+                }
+                case STRASSE_BAUEN -> {
+                    Set<Position> positionen = ((Set<?>) evt.getNewValue())
+                            .stream()
+                            .map(p -> (Position) p)
+                            .collect(Collectors.toSet());
+                    this.strasseBauen(positionen);
+                }
             }
         }
         if (evt.getPropertyName().equals("Landschaftsfeld") && this.zustand == Zustand.LANDSCHAFTSFELD) {
@@ -350,7 +363,7 @@ public class Spiel implements Serializable, PropertyChangeListener {
         this.zustand = zustand;
     }
 
-    public Zustand getZustand() {
+    public Zustand getZustand(){
         return this.zustand;
     }
 

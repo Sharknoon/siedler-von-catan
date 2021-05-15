@@ -34,24 +34,8 @@ public class Handel {
         this.angebot.add(rohstoff);
     }
 
-    public boolean removeAngebot(Rohstoff rohstoff) {
-        if (this.angebot.contains(rohstoff)) {
-            this.angebot.remove(rohstoff);
-            return true;
-        }
-        return false;
-    }
-
     public void addNachfrage(Rohstoff rohstoff) {
         this.nachfrage.add(rohstoff);
-    }
-
-    public boolean removeNachfrage(Rohstoff rohstoff) {
-        if (this.nachfrage.contains(rohstoff)) {
-            this.nachfrage.remove(rohstoff);
-            return true;
-        }
-        return false;
     }
 
     public ObservableList<Rohstoff> getAngebot() {
@@ -62,16 +46,8 @@ public class Handel {
         return this.nachfrage;
     }
 
-    public Spieler getNachfrager() {
-        return this.nachfrager;
-    }
-
     public void setNachfrager(Spieler nachfrager) {
         this.nachfrager = nachfrager;
-    }
-
-    public Spieler getAnbieter() {
-        return this.anbieter;
     }
 
     public void setAnbieter(Spieler anbieter) {

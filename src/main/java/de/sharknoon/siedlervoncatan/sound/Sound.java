@@ -1,6 +1,5 @@
 package de.sharknoon.siedlervoncatan.sound;
 
-import de.sharknoon.siedlervoncatan.Spielstart;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
@@ -11,7 +10,6 @@ public class Sound {
     public static final MediaPlayer MUSIK_MEER = new MediaPlayer(new Media(Pfade.SOUND_MEER));
     public static final MediaPlayer MUSIK_HANDEL = new MediaPlayer(new Media(Pfade.SOUND_HANDEL));
     public static final AudioClip WUERFEL_CLIP = new AudioClip(Pfade.SOUND_WUERFEL);
-    public static final AudioClip WUERFEL_SHAKE_CLIP = new AudioClip(Pfade.SOUND_WUERFEL_WURF);
     public static final AudioClip BAU_CLIP = new AudioClip(Pfade.SOUND_BAU);
     public static final AudioClip BUTTON_CLIP = new AudioClip(Pfade.SOUND_KLICK);
     public static final AudioClip ERROR_CLIP = new AudioClip(Pfade.SOUND_ERROR);

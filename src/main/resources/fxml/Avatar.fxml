@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.sharknoon.siedlervoncatan.view.controller.AvatarController">
-    <ImageView fx:id="avatarIV" fitHeight="134.0" fitWidth="150.0" onContextMenuRequested="#handleInfosRequested" onMouseClicked="#handleAvatarClicked" preserveRatio="true">
+    <ImageView fx:id="avatarIV" fitHeight="134.0" fitWidth="150.0" onMouseClicked="#handleAvatarClicked" preserveRatio="true">
         <effect>
             <InnerShadow height="20.0" radius="9.5" width="20.0" />
         </effect>

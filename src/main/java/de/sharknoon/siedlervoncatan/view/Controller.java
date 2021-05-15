@@ -5,10 +5,10 @@ import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.view.controller.RootLayoutController;
 
 public interface Controller {
-    void setSpiel(Spiel var1);
+    void setSpiel(Spiel spiel);
 
-    void setLayoutController(RootLayoutController var1);
+    void setLayoutController(RootLayoutController layoutController);
 
-    void setNode(Node var1);
+    void setNode(Node self);
 }
 

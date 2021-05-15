@@ -5,7 +5,7 @@ public enum Zustand {
     ERSTE_STRASSE,
     SIEDLUNG_BAUEN,
     STADT_BAUEN,
-    STARSSE_BAUEN,
+    STRASSE_BAUEN,
     LANDSCHAFTSFELD,
     SPIELER
 }

@@ -56,10 +56,6 @@ public class Strasse implements Serializable {
         return false;
     }
 
-    public Spieler getBesitzer() {
-        return this.besitzer;
-    }
-
     public Set<Position> getPositionen() {
         return this.positionen;
     }

@@ -27,8 +27,9 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class SpielfeldController implements MapChangeListener, PropertyChangeListener, Controller {
+public class SpielfeldController implements PropertyChangeListener, Controller {
     private Spiel spiel;
     private final Map<Position, ImageView> imageViewLandschaften = new HashMap<>();
     private final Map<Position, Label> labelLandschaftsfelder = new HashMap<>();
@@ -722,22 +723,25 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
 
     @FXML
     private void handleEckeClicked(Event event) {
-        ImageView ecke = (ImageView)event.getSource();
-        Position position = (Position)ecke.getUserData();
+        ImageView ecke = (ImageView) event.getSource();
+        Position position = (Position) ecke.getUserData();
         this.support.firePropertyChange("Ecke", null, position);
     }
 
     @FXML
     private void handleKanteClicked(Event event) {
-        ImageView kante = (ImageView)event.getSource();
-        Set<Position> positionen = (Set<Position>)kante.getUserData();
+        ImageView kante = (ImageView) event.getSource();
+        Set<Position> positionen = ((Set<?>) kante.getUserData())
+                .stream()
+                .map(p -> (Position) p)
+                .collect(Collectors.toSet());
         this.support.firePropertyChange("Kante", null, positionen);
     }
 
     @FXML
     private void handleLabelZahlenchipsClicked(Event event) {
-        Label zahlenchip = (Label)event.getSource();
-        Position position = (Position)zahlenchip.getUserData();
+        Label zahlenchip = (Label) event.getSource();
+        Position position = (Position) zahlenchip.getUserData();
         this.support.firePropertyChange("Landschaftsfeld", null, position);
     }
 
@@ -756,8 +760,8 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
     @Override
     public void setSpiel(Spiel spiel) {
         this.spiel = spiel;
-        spiel.getSpielfeld().addOrtschaftenListener(this);
-        spiel.getSpielfeld().addStrassenListener(this);
+        spiel.getSpielfeld().addOrtschaftenListener(new OrtschaftenListener());
+        spiel.getSpielfeld().addStrassenListener(new StrassenListener());
         spiel.getWuerfel().addListener(this);
         this.spiel.getSpielstart().getRootLayout().boundsInParentProperty().addListener((observable, oldValue, newValue) -> {
             double height = newValue.getHeight() - 100.0;
@@ -771,17 +775,22 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
         this.erzeugeSpielfeld();
     }
 
-    public void onChanged(Change change) {
-        Image image;
-        Object key = change.getKey();
-        if (key instanceof Position) {
-            image = this.spiel.getSpielfeld().getBauplaetze().get(key).getImage();
-            this.Ecken.get(key).setImage(image);
+    class OrtschaftenListener implements MapChangeListener<Position, Ortschaft> {
+        @Override
+        public void onChanged(Change<? extends Position, ? extends Ortschaft> change) {
+            Object key = change.getKey();
+            Image image = SpielfeldController.this.spiel.getSpielfeld().getBauplaetze().get(key).getImage();
+            SpielfeldController.this.Ecken.get(key).setImage(image);
             Sound.getInstanz().playSoundeffekt(Sound.BAU_CLIP);
         }
-        if (key instanceof Set) {
-            image = this.spiel.getSpielfeld().getStrassen().get(key).getImage();
-            this.kanten.get(key).setImage(image);
+    }
+
+    class StrassenListener implements MapChangeListener<Set<Position>, Strasse> {
+        @Override
+        public void onChanged(Change<? extends Set<Position>, ? extends Strasse> change) {
+            Object key = change.getKey();
+            Image image = SpielfeldController.this.spiel.getSpielfeld().getStrassen().get(key).getImage();
+            SpielfeldController.this.kanten.get(key).setImage(image);
             Sound.getInstanz().playSoundeffekt(Sound.BAU_CLIP);
         }
     }
@@ -790,11 +799,11 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
     public void propertyChange(PropertyChangeEvent evt) {
         int zahl;
         if (evt.getPropertyName().equals("wuerfel1")) {
-            zahl = (Integer)evt.getNewValue();
+            zahl = (Integer) evt.getNewValue();
             this.wuerfel1IV.setImage(this.getWuerfelImage(zahl));
         }
         if (evt.getPropertyName().equals("wuerfel2")) {
-            zahl = (Integer)evt.getNewValue();
+            zahl = (Integer) evt.getNewValue();
             this.wuerfel2IV.setImage(this.getWuerfelImage(zahl));
         }
     }

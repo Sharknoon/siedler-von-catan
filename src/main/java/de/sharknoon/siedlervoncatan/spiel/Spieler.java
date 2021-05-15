@@ -245,13 +245,6 @@ public class Spieler
         return karte;
     }
 
-    public void spieleEntwicklungskarte(Entwicklungskarte entwicklungskarte) {
-        boolean ausgespielt = entwicklungskarte.ausspielen();
-        if (this.entwicklungskarten.contains(entwicklungskarte) && ausgespielt) {
-            this.entwicklungskarten.remove(entwicklungskarte);
-        }
-    }
-
     public void versetzeRauber() {
         this.spiel.setNotSaveable();
         this.spiel.getUserInterface().zeigeMessage(this + " bitte versetzen Sie den Räuber.");
@@ -339,10 +332,6 @@ public class Spieler
 
     public Farbe getFarbe() {
         return this.farbe;
-    }
-
-    public Set<Hafen> getHaefen() {
-        return this.haefen;
     }
 
     public ObservableList<Rohstoff> getKarten() {

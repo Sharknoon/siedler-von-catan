@@ -33,11 +33,6 @@ Serializable {
     }
 
     @Override
-    public Spieler getBesitzer() {
-        return this.besitzer;
-    }
-
-    @Override
     public int getErtrag() {
         return 2;
     }

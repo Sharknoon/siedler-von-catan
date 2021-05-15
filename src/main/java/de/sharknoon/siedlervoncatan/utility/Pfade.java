@@ -2,7 +2,6 @@ package de.sharknoon.siedlervoncatan.utility;
 
 import de.sharknoon.siedlervoncatan.Spielstart;
 
-import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -89,7 +88,6 @@ public class Pfade {
     public static final String SOUND_MEER = getResource("/sounds/meer.wav");
     public static final String SOUND_HANDEL = getResource("/sounds/handel.wav");
     public static final String SOUND_WUERFEL = getResource("/sounds/dice.wav");
-    public static final String SOUND_WUERFEL_WURF = getResource("/sounds/diceshake.wav");
     public static final String SOUND_BAU = getResource("/sounds/bauen.wav");
     public static final String SOUND_KLICK = getResource("/sounds/click.wav");
     public static final String SOUND_ERROR = getResource("/sounds/error.wav");
@@ -104,10 +102,6 @@ public class Pfade {
             return "";
         }
         return resource.toExternalForm();
-    }
-
-    private static InputStream getResourceAsStream(String path) {
-        return Spielstart.class.getResourceAsStream(path);
     }
 }
 

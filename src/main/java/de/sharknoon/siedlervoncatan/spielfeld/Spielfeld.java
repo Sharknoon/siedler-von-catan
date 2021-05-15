@@ -145,10 +145,6 @@ implements Serializable {
         this.ortschaften.addListener(listener);
     }
 
-    public void removeOrtschaftListener(MapChangeListener<Position, Ortschaft> listener) {
-        this.ortschaften.removeListener(listener);
-    }
-
     public void putStrasse(Strasse strasse) {
         this.strassen.put(strasse.getPositionen(), strasse);
     }
@@ -157,16 +153,8 @@ implements Serializable {
         this.strassen.addListener(listener);
     }
 
-    public void removeStrassenListener(MapChangeListener<Set<Position>, Strasse> listener) {
-        this.strassen.removeListener(listener);
-    }
-
     public ObservableMap<Set<Position>, Strasse> getStrassen() {
         return this.strassen;
-    }
-
-    public static List<Position> getLandschaftsPositionen() {
-        return LANDSCHAFTS_POSITIONEN;
     }
 
     public Map<Position, Landschaftsfeld> getLandschaftsfelder() {

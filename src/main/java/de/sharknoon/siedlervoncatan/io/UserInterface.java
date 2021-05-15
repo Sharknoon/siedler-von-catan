@@ -6,14 +6,13 @@ import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Handel;
 import de.sharknoon.siedlervoncatan.view.controller.SpielfeldController;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 public interface UserInterface {
 
-    void setSpielstart(Spielstart var1);
+    void setSpielstart(Spielstart spielstart);
 
-    void setSpiel(Spiel var1);
+    void setSpiel(Spiel spiel);
 
     void zeigeHauptmenue();
 
@@ -37,29 +36,27 @@ public interface UserInterface {
 
     void zeigeHandel();
 
-    void zeigeSpielerHandel(Handel var1);
+    void zeigeSpielerHandel(Handel handel);
 
-    void zeigeKartenAbgeben(Spieler var1, int var2);
+    void zeigeKartenAbgeben(Spieler spieler, int anzahl);
 
     void zeigeSieger();
 
-    void zeigeInfo(String var1);
+    void zeigeInfo(String info);
 
-    void zeigeError(String var1);
+    void zeigeError(String error);
 
-    Rohstoff zeigeRohstoffauswahl(String var1);
+    Rohstoff zeigeRohstoffauswahl(String text);
 
-    boolean zeigeConfirmation(String var1);
+    boolean zeigeConfirmation(String text);
 
-    Pane zeigeSpielerInfos(Spieler var1);
+    void zeigeSpielerInfos(Spieler spieler);
 
-    Pane zeigeAvatar(Spieler var1);
-
-    void removeFromCenterAnimatedH(Node var1);
+    Pane zeigeAvatar(Spieler spieler);
 
     SpielfeldController getSpielfeldController();
 
-    void zeigeMessage(String var1);
+    void zeigeMessage(String message);
 
     void zeigeBaukosten();
 

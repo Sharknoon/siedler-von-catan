@@ -15,17 +15,18 @@ public class Zusatzpunkte implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public static void pruefeGroessteRittermacht(Spieler spieler) {
-        if (!spieler.hatGroessteRittermacht()) {
-            boolean groessteRittermachtVergeben = false;
-            for (Spieler andererSpieler : spieler.getSpiel().getAlleSpieler()) {
-                if (!andererSpieler.hatGroessteRittermacht()) continue;
-                groessteRittermachtVergeben = true;
-                if (spieler.getRitter().get() <= andererSpieler.getRitter().get()) continue;
-                Zusatzpunkte.changeGroessteRittermacht(spieler, andererSpieler);
-            }
-            if (!groessteRittermachtVergeben) {
-                Zusatzpunkte.setGroessteRittermacht(spieler);
-            }
+        if (spieler.hatGroessteRittermacht()) {
+            return;
+        }
+        boolean groessteRittermachtVergeben = false;
+        for (Spieler andererSpieler : spieler.getSpiel().getAlleSpieler()) {
+            if (!andererSpieler.hatGroessteRittermacht()) continue;
+            groessteRittermachtVergeben = true;
+            if (spieler.getRitter().get() <= andererSpieler.getRitter().get()) continue;
+            Zusatzpunkte.changeGroessteRittermacht(spieler, andererSpieler);
+        }
+        if (!groessteRittermachtVergeben) {
+            Zusatzpunkte.setGroessteRittermacht(spieler);
         }
     }
 
@@ -62,7 +63,8 @@ public class Zusatzpunkte implements Serializable {
         ArrayList<Strasse> kopiestrassen = new ArrayList<>(strassen);
         for (Strasse strasse : kopiestrassen) {
             HashSet<Position> positionen;
-            if (!strassen.contains(strasse) || !(positionen = new HashSet<>(strasse.getPositionen())).contains(startposition)) continue;
+            if (!strassen.contains(strasse) || !(positionen = new HashSet<>(strasse.getPositionen())).contains(startposition))
+                continue;
             positionen.remove(startposition);
             strassen.remove(strasse);
             int teillaenge = 1;
@@ -74,17 +76,18 @@ public class Zusatzpunkte implements Serializable {
     }
 
     public static void pruefeLaengsteHandelsstrasse(Spieler spieler) {
-        if (!spieler.hatLaengsteHandelsstrasse()) {
-            boolean laengsteHandelsstrasseVergeben = false;
-            for (Spieler andererSpieler : spieler.getSpiel().getAlleSpieler()) {
-                if (!andererSpieler.hatLaengsteHandelsstrasse()) continue;
-                laengsteHandelsstrasseVergeben = true;
-                if (spieler.getLaengsteHandelsstrasse() <= andererSpieler.getLaengsteHandelsstrasse()) continue;
-                Zusatzpunkte.changeLaengsteHandelsstrasse(spieler, andererSpieler);
-            }
-            if (!laengsteHandelsstrasseVergeben) {
-                Zusatzpunkte.setLaengsteHandelsstrasse(spieler);
-            }
+        if (spieler.hatLaengsteHandelsstrasse()) {
+            return;
+        }
+        boolean laengsteHandelsstrasseVergeben = false;
+        for (Spieler andererSpieler : spieler.getSpiel().getAlleSpieler()) {
+            if (!andererSpieler.hatLaengsteHandelsstrasse()) continue;
+            laengsteHandelsstrasseVergeben = true;
+            if (spieler.getLaengsteHandelsstrasse() <= andererSpieler.getLaengsteHandelsstrasse()) continue;
+            Zusatzpunkte.changeLaengsteHandelsstrasse(spieler, andererSpieler);
+        }
+        if (!laengsteHandelsstrasseVergeben) {
+            Zusatzpunkte.setLaengsteHandelsstrasse(spieler);
         }
     }
 

@@ -6,7 +6,6 @@ import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Handel;
 import de.sharknoon.siedlervoncatan.view.controller.SpielfeldController;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
 public class MenueTest implements UserInterface {
@@ -94,17 +93,12 @@ public class MenueTest implements UserInterface {
     }
 
     @Override
-    public Pane zeigeSpielerInfos(Spieler spieler) {
-        return null;
+    public void zeigeSpielerInfos(Spieler spieler) {
     }
 
     @Override
     public Pane zeigeAvatar(Spieler spieler) {
         return null;
-    }
-
-    @Override
-    public void removeFromCenterAnimatedH(Node node) {
     }
 
     @Override

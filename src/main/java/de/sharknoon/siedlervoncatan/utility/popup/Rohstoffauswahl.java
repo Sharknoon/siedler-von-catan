@@ -16,10 +16,6 @@ implements PropertyChangeListener {
     private Rohstoff rohstoff;
     private Stage stage;
 
-    public Rohstoffauswahl() {
-        this("Wähle einen Rohstoff.");
-    }
-
     public Rohstoffauswahl(String text) {
         try {
             ViewController viewController = new ViewController(null, null);

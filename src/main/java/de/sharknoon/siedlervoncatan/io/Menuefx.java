@@ -13,7 +13,6 @@ import de.sharknoon.siedlervoncatan.view.ViewController;
 import de.sharknoon.siedlervoncatan.view.controller.*;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
@@ -209,17 +208,15 @@ public class Menuefx implements UserInterface {
     }
 
     @Override
-    public Pane zeigeSpielerInfos(Spieler spieler) {
+    public void zeigeSpielerInfos(Spieler spieler) {
         try {
             Pane pane = this.viewController.initPane(Pfade.SPIELERINFOS);
             FXMLLoader loader = this.viewController.getLoader();
             SpielerInfosController controller = loader.getController();
             controller.setSpieler(spieler);
             this.layoutController.addToCenterAnimatedH(pane);
-            return pane;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
     }
 
@@ -234,11 +231,6 @@ public class Menuefx implements UserInterface {
             e.printStackTrace();
             return null;
         }
-    }
-
-    @Override
-    public void removeFromCenterAnimatedH(Node node) {
-        this.layoutController.removeFromCenterAnimatedH(node);
     }
 
     @Override
