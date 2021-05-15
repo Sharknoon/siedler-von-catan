@@ -119,5 +119,9 @@ public class MenueTest implements UserInterface {
     @Override
     public void zeigeBaukosten() {
     }
+
+    @Override
+    public void zeigeAnleitung() {
+    }
 }
 

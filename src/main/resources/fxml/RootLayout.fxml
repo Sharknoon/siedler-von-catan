@@ -10,18 +10,18 @@
    <top>
        <MenuBar BorderPane.alignment="CENTER">
            <Menu mnemonicParsing="false" text="Menü">
-               <MenuItem mnemonicParsing="false" onAction="#handleNeu" text="Neu"/>
-               <MenuItem mnemonicParsing="false" onAction="#handleLaden" text="Laden"/>
-               <MenuItem mnemonicParsing="false" onAction="#handleSpeichern" text="Speichern"/>
-               <MenuItem mnemonicParsing="false" onAction="#handleBeenden" text="Beenden"/>
+               <MenuItem mnemonicParsing="false" onAction="#handleNeu" text="Neu" />
+               <MenuItem mnemonicParsing="false" onAction="#handleLaden" text="Laden" />
+               <MenuItem mnemonicParsing="false" onAction="#handleSpeichern" text="Speichern" />
+               <MenuItem mnemonicParsing="false" onAction="#handleBeenden" text="Beenden" />
            </Menu>
            <Menu mnemonicParsing="false" text="Optionen">
-               <MenuItem mnemonicParsing="false" onAction="#handleAudio" text="Audio"/>
-               <MenuItem mnemonicParsing="false" onAction="#handleVollbild" text="Vollbild"/>
+               <MenuItem mnemonicParsing="false" onAction="#handleAudio" text="Audio" />
+               <MenuItem mnemonicParsing="false" onAction="#handleVollbild" text="Vollbild" />
            </Menu>
            <Menu mnemonicParsing="false" text="Hilfe">
-               <MenuItem mnemonicParsing="false" onAction="#handleAnleitung" text="Anleitung"/>
-               <MenuItem mnemonicParsing="false" onAction="#handleBaukosten" text="Baukosten"/>
+               <MenuItem mnemonicParsing="false" onAction="#handleAnleitung" text="Anleitung" />
+               <MenuItem mnemonicParsing="false" onAction="#handleBaukosten" text="Baukosten" />
            </Menu>
        </MenuBar>
    </top>

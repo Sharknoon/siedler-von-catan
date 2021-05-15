@@ -13,9 +13,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.File;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -153,17 +151,7 @@ public class RootLayoutController implements Controller {
 
     @FXML
     private void handleAnleitung() {
-        try {
-            URL anleitung = Spielstart.class.getResource(Pfade.ANLEITUNG);
-            if (anleitung == null) {
-                throw new NullPointerException();
-            }
-            File file = new File(anleitung.toURI());
-            Desktop.getDesktop().open(file);
-        } catch (Exception e) {
-            this.spielstart.getUserInterface().zeigeError("Die Anleitung konnte nicht geöffnet werden.");
-            e.printStackTrace();
-        }
+        this.spielstart.getUserInterface().zeigeAnleitung();
     }
 
     @FXML

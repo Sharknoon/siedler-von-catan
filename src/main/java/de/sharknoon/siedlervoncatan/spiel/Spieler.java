@@ -15,10 +15,11 @@ import java.beans.PropertyChangeListener;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Spieler
-implements PropertyChangeListener,
-Serializable {
+        implements PropertyChangeListener,
+        Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
     private final String name;
@@ -88,7 +89,8 @@ Serializable {
             } else {
                 for (Ortschaft ortschaft : this.ortschaften.values()) {
                     for (Landschaftsfeld landschaftsfeld : this.spiel.getSpielfeld().getLandschaftsfelder().values()) {
-                        if (landschaftsfeld.getLandschaft().getRohstoff() == null || !evt.getNewValue().equals(landschaftsfeld.getZahl()) || landschaftsfeld.getZentrum().equals(this.spiel.getRaeuber().getPosition().get()) || !landschaftsfeld.getZentrum().isNachbar(ortschaft.getPosition())) continue;
+                        if (landschaftsfeld.getLandschaft().getRohstoff() == null || !evt.getNewValue().equals(landschaftsfeld.getZahl()) || landschaftsfeld.getZentrum().equals(this.spiel.getRaeuber().getPosition().get()) || !landschaftsfeld.getZentrum().isNachbar(ortschaft.getPosition()))
+                            continue;
                         int ertrag = ortschaft.getErtrag();
                         Rohstoff rohstoff = landschaftsfeld.getLandschaft().getRohstoff();
                         for (int i = 0; i < ertrag; ++i) {
@@ -116,12 +118,13 @@ Serializable {
                 }
                 ++this.anzahlStrassen;
                 return true;
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 this.spiel.getUserInterface().zeigeError("Strasse konnte nicht gebaut werden.");
             }
+        } else if (this.anzahlStrassen >= 15) {
+            this.spiel.getUserInterface().zeigeError("Alle 15 Strassen wurden bereits gebaut.");
         } else {
-            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError(baueFehlendeRohstoffeString(Baukosten.STRASSE));
         }
         return false;
     }
@@ -140,12 +143,13 @@ Serializable {
                 }
                 ++this.anzahlSiedlungen;
                 return true;
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 this.spiel.getUserInterface().zeigeError("Siedlung konnte nicht gebaut werden.");
             }
+        } else if (this.anzahlSiedlungen >= 5) {
+            this.spiel.getUserInterface().zeigeError("Alle 5 Siedlungen wurden bereits gebaut.");
         } else {
-            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError(baueFehlendeRohstoffeString(Baukosten.SIEDLUNG));
         }
         return false;
     }
@@ -160,12 +164,13 @@ Serializable {
                 ++this.anzahlStaedte;
                 --this.anzahlSiedlungen;
                 return true;
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 this.spiel.getUserInterface().zeigeError("Stadt konnte nicht gebaut werden.");
             }
+        } else if (this.anzahlStaedte >= 4) {
+            this.spiel.getUserInterface().zeigeError("Alle 4 Städte wurden bereits gebaut.");
         } else {
-            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError(baueFehlendeRohstoffeString(Baukosten.STADT));
         }
         return false;
     }
@@ -200,6 +205,27 @@ Serializable {
         return true;
     }
 
+    private Map<Rohstoff, Integer> fehlendeRohstoffe(Collection<Rohstoff> kosten) {
+        Map<Rohstoff, Integer> fehlendeRohstoffe = new HashMap<>();
+        for (Rohstoff rohstoff : kosten) {
+            int haben = Collections.frequency(this.karten, rohstoff);
+            int soll = Collections.frequency(kosten, rohstoff);
+            if (haben < soll) {
+                fehlendeRohstoffe.put(rohstoff, soll - haben);
+            }
+        }
+        return fehlendeRohstoffe;
+    }
+
+    private String baueFehlendeRohstoffeString(Collection<Rohstoff> baukosten) {
+        String fehlendeRohstoffe = fehlendeRohstoffe(baukosten)
+                .entrySet()
+                .stream()
+                .map((e) -> e.getValue() + " " + e.getKey())
+                .collect(Collectors.joining("\n"));
+        return String.format("Nicht genügend Rohstoffe vorhanden. Es fehlen:\n%s", fehlendeRohstoffe);
+    }
+
     public boolean kaufeEntwicklungskarte() {
         if (this.decktKosten(Baukosten.ENTWICKLUNGSKARTE) && Entwicklung.istNichtLeer()) {
             Entwicklungskarte entwicklungskarte = new Entwicklungskarte(this);
@@ -207,7 +233,7 @@ Serializable {
             this.removeKarten(Baukosten.ENTWICKLUNGSKARTE);
             return true;
         }
-        this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
+        this.spiel.getUserInterface().zeigeError(baueFehlendeRohstoffeString(Baukosten.ENTWICKLUNGSKARTE));
         return false;
     }
 
@@ -268,7 +294,7 @@ Serializable {
                 this.addKarte(erhalten);
             }
         } else {
-            this.spiel.getUserInterface().zeigeError("Nicht genügend Rohstoffe vorhanden.");
+            this.spiel.getUserInterface().zeigeError(String.format("Nicht genügend Rohstoffe vorhanden. Ihnen fehlen %d %s.", umtauschkurs - vorhandenerRohstoff, abzugeben));
         }
     }
 

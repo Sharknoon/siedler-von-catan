@@ -2,6 +2,8 @@ package de.sharknoon.siedlervoncatan.utility;
 
 import de.sharknoon.siedlervoncatan.Spielstart;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -24,6 +26,7 @@ public class Pfade {
     public static final String AVATAR = getResource("/fxml/Avatar.fxml");
     public static final String AUDIO_MENUE = getResource("/fxml/Audio.fxml");
     public static final String BAUKOSTEN = getResource("/fxml/Baukosten.fxml");
+    public static final String ANLEITUNG = getResource("/fxml/Anleitung.fxml");
     public static final String ROHSTOFFAUSWAHL = getResource("/fxml/Rohstoffauswahl.fxml");
     public static final String INFO = getResource("/fxml/Info.fxml");
     public static final String ERROR = getResource("/fxml/Error.fxml");
@@ -70,6 +73,18 @@ public class Pfade {
     public static final String LANDSCHAFT_WALD = getResource("/bilder/landschaft_wald.png");
     public static final String LANDSCHAFT_WEIDELAND = getResource("/bilder/landschaft_weideland.png");
     public static final String LANDSCHAFT_WUESTE = getResource("/bilder/landschaft_wueste.png");
+    public static final String ANLEITUNG_1 = getResource("/bilder/anleitung_1.jpg");
+    public static final String ANLEITUNG_2 = getResource("/bilder/anleitung_2.jpg");
+    public static final String ANLEITUNG_3 = getResource("/bilder/anleitung_3.jpg");
+    public static final String ANLEITUNG_4 = getResource("/bilder/anleitung_4.jpg");
+    public static final String ANLEITUNG_5 = getResource("/bilder/anleitung_5.jpg");
+    public static final String ANLEITUNG_6 = getResource("/bilder/anleitung_6.jpg");
+    public static final String ANLEITUNG_7 = getResource("/bilder/anleitung_7.jpg");
+    public static final String ANLEITUNG_8 = getResource("/bilder/anleitung_8.jpg");
+    public static final String ANLEITUNG_9 = getResource("/bilder/anleitung_9.jpg");
+    public static final String ANLEITUNG_10 = getResource("/bilder/anleitung_10.jpg");
+    public static final String ANLEITUNG_11 = getResource("/bilder/anleitung_11.jpg");
+    public static final String ANLEITUNG_12 = getResource("/bilder/anleitung_12.jpg");
     public static final String SOUND_MENUE = getResource("/sounds/menue.wav");
     public static final String SOUND_MEER = getResource("/sounds/meer.wav");
     public static final String SOUND_HANDEL = getResource("/sounds/handel.wav");
@@ -81,12 +96,18 @@ public class Pfade {
     public static final String SOUND_SIEGER = getResource("/sounds/sieger.wav");
     public static final String SOUND_EVIL_LAUGH = getResource("/sounds/evilLaugh.wav");
     public static final String SOUND_PAPER = getResource("/sounds/paper.wav");
-    public static final String ANLEITUNG = getResource("/data/die_siedler_von_catan_jubilaeumsausgabe_almanach.pdf");
     public static final Path SAVES = Paths.get(System.getProperty("user.home"), "Siedler von Catan", "saves");
-    
+
     private static String getResource(String path) {
-        return String.valueOf(Spielstart.class.getResource(path));
+        URL resource = Spielstart.class.getResource(path);
+        if (resource == null) {
+            return "";
+        }
+        return resource.toExternalForm();
     }
-    
+
+    private static InputStream getResourceAsStream(String path) {
+        return Spielstart.class.getResourceAsStream(path);
+    }
 }
 

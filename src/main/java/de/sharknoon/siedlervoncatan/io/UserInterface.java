@@ -62,5 +62,7 @@ public interface UserInterface {
     void zeigeMessage(String var1);
 
     void zeigeBaukosten();
+
+    void zeigeAnleitung();
 }
 

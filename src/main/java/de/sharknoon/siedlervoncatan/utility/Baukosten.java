@@ -6,8 +6,7 @@ import de.sharknoon.siedlervoncatan.utility.popup.Popup;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Baukosten
-extends Popup {
+public class Baukosten extends Popup {
     public static final Collection<Rohstoff> SIEDLUNG = new ArrayList<>();
     public static final Collection<Rohstoff> STADT;
     public static final Collection<Rohstoff> STRASSE;

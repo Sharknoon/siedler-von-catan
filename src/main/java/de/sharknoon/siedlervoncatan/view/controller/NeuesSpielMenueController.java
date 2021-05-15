@@ -11,8 +11,7 @@ import javafx.scene.control.ListView;
 
 import javax.swing.*;
 
-public class NeuesSpielMenueController
-implements Controller {
+public class NeuesSpielMenueController implements Controller {
     @FXML
     private ListView<Spieler> alleSpieler;
     private Spiel spiel;

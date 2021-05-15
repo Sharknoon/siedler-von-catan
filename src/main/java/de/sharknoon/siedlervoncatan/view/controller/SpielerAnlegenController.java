@@ -25,6 +25,7 @@ implements Controller {
     @FXML
     private void initialize() {
         this.farbe.getItems().addAll(Spiel.farben);
+        this.farbe.setValue(Spiel.farben.get(0));
         this.name.requestFocus();
     }
 

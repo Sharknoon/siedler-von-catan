@@ -7,10 +7,8 @@ import de.sharknoon.siedlervoncatan.spiel.Spiel;
 import de.sharknoon.siedlervoncatan.spiel.Spieler;
 import de.sharknoon.siedlervoncatan.utility.Handel;
 import de.sharknoon.siedlervoncatan.utility.Pfade;
-import de.sharknoon.siedlervoncatan.utility.popup.Confirmation;
 import de.sharknoon.siedlervoncatan.utility.popup.Error;
-import de.sharknoon.siedlervoncatan.utility.popup.Info;
-import de.sharknoon.siedlervoncatan.utility.popup.Rohstoffauswahl;
+import de.sharknoon.siedlervoncatan.utility.popup.*;
 import de.sharknoon.siedlervoncatan.view.ViewController;
 import de.sharknoon.siedlervoncatan.view.controller.*;
 import javafx.fxml.FXMLLoader;
@@ -70,6 +68,11 @@ public class Menuefx implements UserInterface {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void zeigeAnleitung() {
+        new Anleitung("Anleitung").showAndWait();
     }
 
     @Override

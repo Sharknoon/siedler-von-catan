@@ -9,9 +9,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
-public class Confirmation
-extends Popup
-implements PropertyChangeListener {
+public class Confirmation extends Popup implements PropertyChangeListener {
     private Stage stage;
     private boolean antwort;
 

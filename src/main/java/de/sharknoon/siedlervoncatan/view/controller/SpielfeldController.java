@@ -801,7 +801,6 @@ public class SpielfeldController implements MapChangeListener, PropertyChangeLis
 
     private Image getWuerfelImage(int zahl) {
         String path = switch (zahl) {
-            case 1 -> Pfade.WUERFEL_EINS;
             case 2 -> Pfade.WUERFEL_ZWEI;
             case 3 -> Pfade.WUERFEL_DREI;
             case 4 -> Pfade.WUERFEL_VIER;
