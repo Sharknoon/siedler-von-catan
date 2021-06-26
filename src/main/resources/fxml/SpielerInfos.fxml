@@ -98,7 +98,7 @@
           <Insets right="30.0" top="20.0" />
         </StackPane.margin>
         <font>
-          <Font name="System Bold" size="15.0" />
+          <Font name="Arial Bold" size="15.0" />
         </font>
         <cursor>
           <Cursor fx:constant="HAND" />

@@ -15,7 +15,7 @@
     </ButtonBar>
     <Label layoutX="218.0" layoutY="44.0" onMouseClicked="#handleAbbrechen" text="X" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0">
         <font>
-          <Font name="System Bold" size="15.0" />
+          <Font name="Arial Bold" size="15.0" />
         </font>
     </Label>
     <Label fx:id="textL" layoutX="157.0" layoutY="80.0" text="text" wrapText="true" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="55.0" />

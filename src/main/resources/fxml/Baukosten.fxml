@@ -30,27 +30,27 @@
       </rowConstraints>
       <Label text="Strasse" GridPane.rowIndex="1">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Label>
       <Label text="Siedlung" GridPane.rowIndex="3">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Label>
       <Label text="Stadt" GridPane.rowIndex="5">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Label>
       <Label text="Entwicklungskarte" GridPane.columnSpan="2" GridPane.rowIndex="7">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font name="Arial Bold" size="15.0" />
          </font>
       </Label>
       <Label text="Baukosten" GridPane.columnSpan="2" GridPane.halignment="CENTER">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
       <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -148,7 +148,7 @@
    </GridPane>
    <Label layoutX="310.0" layoutY="14.0" onMouseClicked="#handleClose" text="X" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
       <font>
-         <Font name="System Bold" size="15.0" />
+         <Font name="Arial Bold" size="15.0" />
       </font>
    </Label>
 </AnchorPane>

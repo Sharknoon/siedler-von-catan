@@ -21,7 +21,7 @@
    <top>
       <Label fx:id="labelClose" text="X" BorderPane.alignment="TOP_RIGHT">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
          <BorderPane.margin>
             <Insets bottom="10.0" right="20.0" top="10.0" />
